@@ -1,9 +1,12 @@
 package handlers
 
-import "net/http"
+import (
+	
+	"net/http"
+
+	"github.com/eswarmamidi19/chi_htmx/views"
+)
 
 func HandleFoo(w http.ResponseWriter , r *http.Request) error{
-   
-   _,err:= w.Write([]byte("Bar"));
-   return err
+    return Render(w,r,views.Index())
 }

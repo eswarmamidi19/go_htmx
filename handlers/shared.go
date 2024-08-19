@@ -3,6 +3,8 @@ package handlers
 import (
 	"log/slog"
 	"net/http"
+
+	"github.com/a-h/templ"
 )
 
 
@@ -15,4 +17,9 @@ func MakeHttpHandler(h Apifunc) http.HandlerFunc{
      	 slog.Error(err.Error())
      }
   }
+}
+
+
+func Render(w http.ResponseWriter , r *http.Request , component templ.Component) error{
+   return component.Render(r.Context() , w)
 }
